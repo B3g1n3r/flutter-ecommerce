@@ -50,7 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
           ),
-          const SizedBox(width: 16,)
+          const SizedBox(width: 10,),
+          GestureDetector(onTap: (){
+            Navigator.pushNamed(context, '/profile');
+          }, child: const Icon(Icons.person)),
+           const SizedBox(width: 10,),
         ],
       ),
       body: IndexedStack(
@@ -59,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _buildHomeTab(),
           _buildSearchTab(),
           _buildWishlistTab(),
-          _buildProfileTab(),
+          
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -93,10 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             label: 'Wishlist',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
           ),
         ],
       ),
@@ -303,14 +303,60 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildProfileTab() {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/profile');
-        },
-        child: const Text('Go to Profile'),
+  Widget _buildProfileTab(BuildContext context) {
+  return Center(
+    child: Card(
+      elevation: 6,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 28),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.account_circle,
+              size: 70,
+              color: Colors.blueAccent,
+            ),
+            const SizedBox(height: 18),
+            Text(
+              'Welcome!',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueGrey[800],
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Tap below to view or edit your profile details.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.blueGrey[500],
+              ),
+            ),
+            const SizedBox(height: 26),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.arrow_forward),
+              label: const Text('Go to Profile'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(160, 48),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                backgroundColor: Colors.blueAccent,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
+          ],
+        ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
