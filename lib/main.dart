@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/testing.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
             themeMode: themeProvider.themeMode,
             initialRoute: '/splash',
             routes: {
-              '/splash': (context) => const SplashScreen(),
+              '/splash': (context) =>  SplashScreen(),
               '/onboarding': (context) => const OnboardingScreen(),
               '/login': (context) => const LoginScreen(),
               '/register': (context) => const RegisterScreen(),
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
               '/checkout': (context) => const CheckoutScreen(),
               '/wishlist': (context) => const WishlistScreen(),
               '/profile': (context) => const ProfileScreen(),
+              '/test' : (context)=> NodeExample()
             },
           );
           //demo@example.com
